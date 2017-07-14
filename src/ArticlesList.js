@@ -1,5 +1,6 @@
 import React from 'react'
 import Article from './Article'
+import Spoiler from './Spoiler'
 
 function ArticleList({ articles }) {
     const articleElements = articles.map(mapArticle)
@@ -12,9 +13,11 @@ function ArticleList({ articles }) {
 }
 
 function mapArticle(article){
+    const content = <Article article = {article} />
+
     return (
         <li key = {article.id}>
-            <Article article = {article} />
+            <Spoiler content = {content} />
         </li>
     )
 }
