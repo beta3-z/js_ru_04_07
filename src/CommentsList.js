@@ -7,19 +7,18 @@ class CommentList extends Component {
     }
 
     render(){
+        const comments = (this.props.comments || []).map(this.renderComment);
+
         return (
             <ul>
-                {this.getComments()}
+                {comments}
             </ul>
         )
     }
 
-    getComments(){
-        debugger;
-        return (this.props.comments || []).map(this.renderComment);
+    renderComment(comment){
+        return <Comment key={comment.id} comment={comment} />
     }
-
-    renderComment = (comment) => <Comment key={comment.id} comment={comment} />
 }
 
 export default CommentList
