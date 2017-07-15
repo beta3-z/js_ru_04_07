@@ -14,17 +14,28 @@ class Article extends Component {
         )
     }
 
+    static defaultProps = {
+        disableTitle: false
+    }
+
     render(){
-        const {title, text, comments} = this.props.article,
+        const {text, comments} = this.props.article,
+            {disableTitle} = this.props,
             commentsList = <CommentsList comments = {comments}/>
 
         return (
             <div>
-                <h3>{title}</h3>
+                {disableTitle ? null : Article.getTitle(this.props)}
                 <p>{text}</p>
                 <Spoiler content = {commentsList} />
             </div>
         )
+    }
+
+    static getTitle({article}){
+        const {title, onClick} = article || {}
+
+        return <h3 onClick = {onClick}>{title}</h3>
     }
 }
 
