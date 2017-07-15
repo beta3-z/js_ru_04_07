@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
+import PropTypes from 'prop-types'
 import Comment from './Comment'
 
-class CommentList extends Component {
-    constructor(props){
-        super(props);
+class CommentsList extends Component {
+    static propTypes = {
+        comments: PropTypes.arrayOf(PropTypes.object)
     }
 
     render(){
@@ -17,8 +18,12 @@ class CommentList extends Component {
     }
 
     renderComment(comment){
-        return <Comment key={comment.id} comment={comment} />
+        return (
+            <li key={comment.id}>
+                <Comment comment={comment} />
+            </li>
+        )
     }
 }
 
-export default CommentList
+export default CommentsList

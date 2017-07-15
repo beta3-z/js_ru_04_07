@@ -1,6 +1,11 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class Spoiler extends React.Component {
+    static propTypes = {
+        content: PropTypes.object
+    }
+
     state = {
         isOpen: false
     }

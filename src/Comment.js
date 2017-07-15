@@ -1,16 +1,26 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-function Comment(props){
-    const {comment} = props
+class Comment extends React.Component {
+    static propTypes = {
+        comment: PropTypes.shape({
+            user: PropTypes.string.isRequired,
+            text: PropTypes.string.isRequired
+        })
+    }
 
-    return (
-        <div>
-            <h5>{comment.user}</h5>
-            <pre>
+    render(){
+        const {comment} = this.props
+
+        return (
+            <div>
+                <h5>{comment.user}</h5>
+                <pre>
                 {comment.text}
             </pre>
-        </div>
-    );
+            </div>
+        );
+    }
 }
 
 export default Comment

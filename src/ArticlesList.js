@@ -1,25 +1,33 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import Article from './Article'
 import Spoiler from './Spoiler'
 
-function ArticleList({ articles }) {
-    const articleElements = articles.map(mapArticle)
+class ArticleList extends React.Component {
+    static propTypes = {
+        articles: PropTypes.arrayOf(PropTypes.object)
+    }
 
-    return (
-        <ul>
-            {articleElements}
-        </ul>
-    )
-}
+    render() {
+        const articles = this.props.articles || [],
+            articleElements = articles.map(this.mapArticle)
 
-function mapArticle(article){
-    const content = <Article article = {article} />
+        return (
+            <ul>
+                {articleElements}
+            </ul>
+        )
+    }
 
-    return (
-        <li key = {article.id}>
-            <Spoiler content = {content} />
-        </li>
-    )
+    mapArticle(article){
+        const content = <Article article = {article} />
+
+        return (
+            <li key = {article.id}>
+                <Spoiler content = {content} />
+            </li>
+        )
+    }
 }
 
 export default ArticleList
