@@ -32,6 +32,12 @@ class AccordionDecorator extends React.Component {
 }
 
 class ComponentWrapper extends React.Component {
+    static propTypes = {
+        Component: PropTypes.func.isRequired,
+        props: PropTypes.array,
+        accordion: PropTypes.object.isRequired
+    }
+
     constructor(props){
         super(props)
 
